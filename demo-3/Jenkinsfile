@@ -1,8 +1,8 @@
 node {
   wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
     sh '''
-      echo "\u001B[31mBuilding in red\u001B[0m"
-      echo "Plain color"
+      : === "\u001B[31mBuilding in red"
+      : === "\u001B[0mPlain color"
     '''
   }
 }
