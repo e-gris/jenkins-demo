@@ -1,5 +1,6 @@
 pipeline {
   agent any
+
   options {
     buildDiscarder(logRotator(numToKeepStr: '10'))
     timeout(time: 5, unit: 'MINUTES')
@@ -13,6 +14,16 @@ pipeline {
           : === "Plain color"
         '''
       }
+    }
+  }
+  post {
+    success {
+      sh ': === Success'
+      // Don't have slack connected but here's how it would work
+      //
+      // slackSend channel: 'release-new-new',
+      //   color: 'good',
+      //   message: "${currentBuild.fullDisplayName} succeeded."
     }
   }
 }
